@@ -56,6 +56,7 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    @if($tags->count() > 0)
                                        @foreach($tags as $key=>$tag)
                                        
                                         <tr>
@@ -77,6 +78,10 @@
                                             </td>
                                         </tr>
                                        @endforeach
+                                       @else
+                                       <tr><td>Tags not found!!!</td></tr>
+
+                                       @endif
                                     </tbody>
                                 </table>
                             </div>

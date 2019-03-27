@@ -24,8 +24,8 @@ class SettingController extends Controller
     {
     	 $this->validate($request, [
     	 		'name'=>'required',
-    	 		'email'=>'required|email',
-    	 		'image'=>'required|image',
+    	 		'email'=>'required|email'
+    	 		
     	 		
     	 ]);
 

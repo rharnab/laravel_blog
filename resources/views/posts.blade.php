@@ -72,15 +72,8 @@
                 <div class="col-lg-12 col-md-12">
                         <div class="card h-100">
                             <div class="single-post post-style-1">
-
-
-
-                                <div class="blog-info">
-
+                                 <div class="blog-info">
                                     <h4 class="title">Sorry data not found!!!</h4>
-
-                                    
-
                                 </div><!-- blog-info -->
                             </div><!-- single-post -->
                         </div><!-- card -->

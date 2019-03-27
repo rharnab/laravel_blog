@@ -49,11 +49,11 @@
                                             <th>Is Approved</th>
                                             <th>Status</th>
                                             <th>Created_at</th>
-                                            {{-- <th>Updated At</th> --}}
                                             <th>Active</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                @if($posts->count() > 0)
                                        @foreach($posts as $key=>$post)
                                        
                                         <tr>
@@ -95,6 +95,10 @@
                                             </td>
                                         </tr>
                                        @endforeach
+                                       @else
+
+                                        <tr><td colspan="8">Post not found!!!</td></tr>
+                                       @endif
                                     </tbody>
                                 </table>
                             </div>
