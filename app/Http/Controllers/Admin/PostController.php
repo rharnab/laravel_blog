@@ -232,13 +232,13 @@ class PostController extends Controller
         if($post->is_approved==false)
         {
             $post->is_approved=true;
+            $post->status=true;
             $post->user->Notify(new AuthorPostApprove($post));
 
            $subscribers=Sibscribe::all();
             foreach($subscribers as $subscriber)
             {
                  Notification::route('mail', $subscriber->email)->Notify(new NewPostNotify($post));
-
 
             }
        

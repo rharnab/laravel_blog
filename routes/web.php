@@ -20,6 +20,10 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::post('subscriber', 'SubscriberController@store')->name('subscriber.store');
 Route::get('post/{slug}', 'PostController@post_details')->name('post.details');
 Route::get('posts', 'PostController@index')->name('post.index');
+Route::get('category/{slug}', 'PostController@categoryByPost')->name('category.post');
+Route::get('tag/{slug}', 'PostController@tagByPost')->name('tag.post');
+Route::get('search', 'SearchController@search')->name('search.post');
+Route::get('author-profile/{user_name}', 'AuthorController@author_profile')->name('author.profile');
 
 Auth::routes();
 Route::group(['middleware'=>'auth'], function(){
@@ -32,6 +36,8 @@ Route::group(['as'=>'admin.','prefix'=>'admin', 'namespace'=>'Admin','middleware
 
 	Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 	Route::get('favorite', 'favoriteController@index')->name('favorite');
+	Route::get('author', 'AuthorController@index')->name('author.index');
+	Route::Delete('author{id}/', 'AuthorController@destroy')->name('author.destroy');
 
 	Route::get('setting', 'SettingController@index')->name('setting');
 	Route::post('profile-update', 'SettingController@profile_update')->name('profile.update');

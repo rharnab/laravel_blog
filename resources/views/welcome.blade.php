@@ -19,7 +19,7 @@
             <div class="swiper-wrapper">
                 @foreach($categories as $category)
                     <div class="swiper-slide">
-                        <a class="slider-category" href="#">
+                        <a class="slider-category" href="{{route('category.post', $category->slug)}}">
                             <div class="blog-image"><img src="{{ asset('storage/category/slider/'.$category->image)}}" alt="Blog Image"></div>
 
                             <div class="category">
@@ -53,7 +53,7 @@
 
                                 <div class="blog-image"><img src="{{asset('storage/post/'.$post->image)}}"></div>
 
-                                <a class="avatar" href="#"><img src="{{ asset('storage/profile/'.$post->user->image)}}" alt="Profile Image"></a>
+                                <a class="avatar" href="{{ route('author.profile', $post->user->user_name)}}"><img src="{{ asset('storage/profile/'.$post->user->image)}}" alt="Profile Image"></a>
 
                                 <div class="blog-info">
 

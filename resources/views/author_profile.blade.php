@@ -1,12 +1,12 @@
 @extends('layouts.frontend.app')
 
-@section('title', 'post')
+@section('title', 'Profile')
 
 
 @push('css')
 
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/post/styles.css')}}">
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/post/responsive.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/author_profile/styles.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/author_profile/responsive.css')}}">
 <style type="text/css">
 	.favorite_post{
         color: blue;
@@ -15,23 +15,28 @@
 @endpush
 
 @section('content')
+
 <div class="slider display-table center-text">
-		<h1 class="title display-table-cell"><b>All Post</b></h1>
-	</div><!-- slider -->
+        <h1 class="title display-table-cell"><b>{{ $author->name}}</b></h1>
+    </div><!-- slider -->
 
-	<section class="blog-area section">
-		<div class="container">
+    <section class="blog-area section">
+        <div class="container">
 
-			<div class="row">
+            <div class="row">
+
+                <div class="col-lg-8 col-md-12">
+                    <div class="row">
+
             @if($posts->count() > 0)
-				@foreach($posts as $post)
-					<div class="col-lg-4 col-md-6">
+                @foreach($posts as $post)
+                    <div class="col-lg-6 col-md-6">
                         <div class="card h-100">
                             <div class="single-post post-style-1">
 
                                 <div class="blog-image"><img src="{{asset('storage/post/'.$post->image)}}"></div>
 
-                                <a class="avatar" href="#"><img src="{{ asset('storage/profile/'.$post->user->image)}}" alt="Profile Image"></a>
+                                <a class="avatar" href="{{ route('author.profile', $post->user->user_name)}}"><img src="{{ asset('storage/profile/'.$post->user->image)}}" alt="Profile Image"></a>
 
                                 <div class="blog-info">
 
@@ -65,8 +70,8 @@
                             </div><!-- single-post -->
                         </div><!-- card -->
                     </div><!-- col-lg-4 col-md-6 -->
+                @endforeach
 
-				@endforeach
                 @else
 
                 <div class="col-lg-12 col-md-12">
@@ -87,14 +92,37 @@
                     </div><!-- col-lg-4 col-md-6 -->
 
                 @endif
-				
+                        
 
-			</div><!-- row -->
-            <span> {{ $posts->links()}}</span>
-			{{-- <a class="load-more-btn" href="#"><b>LOAD MORE</b></a> --}}
+                    </div><!-- row -->
+                    <span>{{ $posts->links()}}</span>
+                    {{-- <a class="load-more-btn" href="#"><b>LOAD MORE</b></a> --}}
 
-		</div><!-- container -->
-	</section><!-- section -->
+                </div><!-- col-lg-8 col-md-12 -->
+
+                <div class="col-lg-4 col-md-12 ">
+
+                    <div class="single-post info-area ">
+
+                        <div class="about-area">
+                            <h4 class="title"><b>ABOUT Author</b></h4>
+                            <p>{{$author->user_name}}</p>
+                            <p>{{$author->about}}</p>
+                            <strong>Totall Post {{$author->posts->count()}}</strong><br>
+                            <strong>Active Since   {{$author->created_at->toDateString()}}</strong>
+
+                        </div>
+
+                       
+
+                    </div><!-- info-area -->
+
+                </div><!-- col-lg-4 col-md-12 -->
+
+            </div><!-- row -->
+
+        </div><!-- container -->
+    </section><!-- section -->
 
 
 

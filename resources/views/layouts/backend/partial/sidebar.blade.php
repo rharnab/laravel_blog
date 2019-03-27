@@ -97,6 +97,14 @@
                         
                     </li>
                      
+                    <li class="{{Request::is('admin/author')? 'active': ''}}">
+
+                        <a href="{{route('admin.author.index')}}">
+                            <i class="material-icons">apps</i>
+                            <span>Authors</span>
+                        </a>
+                        
+                    </li>
                     @endif
 
                     @if(Request::is('author*'))
